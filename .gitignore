@@ -1,0 +1,21 @@
+# Dependencias
+node_modules
+
+# Archivos generados al compilar
+dist
+dist-ssr
+
+# Variables de entorno y claves locales
+.env.local
+*.local
+
+# Registros
+logs
+*.log
+npm-debug.log*
+
+# Editores y sistema
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store

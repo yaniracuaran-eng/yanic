@@ -1,0 +1,47 @@
+import { signOut } from 'firebase/auth'
+import { useState } from 'react'
+import { Aviso, Boton, Tarjeta } from '../components/ui'
+import { useSesion } from '../context/AuthContext'
+import { auth } from '../lib/firebase'
+import { mensajeDeError } from '../lib/mensajesError'
+
+export default function PanelPage() {
+  const { usuario } = useSesion()
+  const [saliendo, setSaliendo] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  async function cerrarSesion() {
+    setSaliendo(true)
+    setError(null)
+    try {
+      await signOut(auth) // al quedar sin sesión, RutaPrivada te lleva al login
+    } catch (e) {
+      setError(mensajeDeError(e))
+      setSaliendo(false)
+    }
+  }
+
+  return (
+    <Tarjeta>
+      <div className="text-center">
+        <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-emerald-100 text-2xl">
+          👋
+        </div>
+        <h1 className="text-2xl font-bold text-slate-900">Mi panel</h1>
+        <p className="mt-2 text-sm text-slate-500">Iniciaste sesión correctamente.</p>
+      </div>
+
+      <div className="mt-6 rounded-2xl bg-slate-50 p-4">
+        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Tu correo</p>
+        <p className="mt-1 break-all font-semibold text-slate-900">{usuario?.email}</p>
+      </div>
+
+      <div className="mt-6 space-y-4">
+        {error && <Aviso tipo="error">{error}</Aviso>}
+        <Boton variante="secundario" onClick={cerrarSesion} cargando={saliendo}>
+          {saliendo ? 'Cerrando sesión…' : 'Cerrar sesión'}
+        </Boton>
+      </div>
+    </Tarjeta>
+  )
+}
