@@ -27,6 +27,27 @@ export function mensajeDeError(error: unknown): string {
   return 'Ocurrió un error inesperado. Inténtalo de nuevo en unos minutos.'
 }
 
+// Mensajes propios del botón "Continuar con Google".
+const mensajesGoogle: Record<string, string> = {
+  'auth/operation-not-allowed':
+    'El acceso con Google no está activado en Firebase. Actívalo en Authentication > Sign-in method > Google.',
+  'auth/popup-closed-by-user': 'Cerraste la ventana de Google antes de terminar. Inténtalo de nuevo.',
+  'auth/cancelled-popup-request': 'Cerraste la ventana de Google antes de terminar. Inténtalo de nuevo.',
+  'auth/popup-blocked':
+    'Tu navegador bloqueó la ventana de Google. Permite las ventanas emergentes para esta página e inténtalo de nuevo.',
+  'auth/account-exists-with-different-credential':
+    'Ya existe una cuenta con ese correo. Entra con el enlace por correo.',
+  'auth/unauthorized-domain':
+    'Esta dirección web no está autorizada en Firebase. Agrégala en Authentication > Settings > Authorized domains.',
+}
+
+export function mensajeDeErrorGoogle(error: unknown): string {
+  if (error instanceof FirebaseError && mensajesGoogle[error.code]) {
+    return mensajesGoogle[error.code]
+  }
+  return mensajeDeError(error)
+}
+
 export function esEnlaceInvalido(error: unknown): boolean {
   return (
     error instanceof FirebaseError &&
