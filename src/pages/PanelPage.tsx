@@ -38,17 +38,29 @@ export default function PanelPage() {
       </div>
 
       <div className="mt-6">
-        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Simuladores</p>
-        <Link
-          to="/simulador/proveedor"
-          className="flex items-center gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 transition hover:bg-emerald-100"
-        >
-          <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white text-xl">🌱</span>
-          <span className="flex-1">
-            <span className="block font-semibold text-slate-900">Simulador del proveedor</span>
-            <span className="block text-sm text-slate-600">Factoring ASG: cobra hoy tu factura y ahorra con buenas prácticas.</span>
-          </span>
-          <span aria-hidden className="text-emerald-700">→</span>
+        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">La demostración</p>
+        <div className="space-y-2">
+          <Acceso
+            a="/simulador/proveedor"
+            icono="🌱"
+            titulo="Simulador del proveedor"
+            texto="Factoring ASG: cobra hoy tu factura y ahorra con buenas prácticas."
+          />
+          <Acceso
+            a="/simulador/tendero"
+            icono="🏪"
+            titulo="Simulador del tendero"
+            texto="Microcrédito Pideky: tu historial de compras es tu respaldo."
+          />
+          <Acceso
+            a="/indicadores"
+            icono="📊"
+            titulo="Indicadores de resultado"
+            texto="Avance de las 11 metas del piloto (datos simulados)."
+          />
+        </div>
+        <Link to="/" className="mt-3 block text-center text-sm font-medium text-emerald-700 hover:underline">
+          Ver la propuesta completa
         </Link>
       </div>
 
@@ -59,5 +71,25 @@ export default function PanelPage() {
         </Boton>
       </div>
     </Tarjeta>
+  )
+}
+
+function Acceso({ a, icono, titulo, texto }: { a: string; icono: string; titulo: string; texto: string }) {
+  return (
+    <Link
+      to={a}
+      className="flex items-center gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 transition hover:bg-emerald-100"
+    >
+      <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white text-xl" aria-hidden>
+        {icono}
+      </span>
+      <span className="flex-1">
+        <span className="block font-semibold text-slate-900">{titulo}</span>
+        <span className="block text-sm text-slate-600">{texto}</span>
+      </span>
+      <span aria-hidden className="text-emerald-700">
+        →
+      </span>
+    </Link>
   )
 }

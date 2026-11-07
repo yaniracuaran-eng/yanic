@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
+import PaginaAncha from '../components/PaginaAncha'
 import {
   PRACTICAS_ASG,
   TASA_BASE_ANUAL,
@@ -24,21 +24,11 @@ export default function SimuladorProveedorPage() {
   }
 
   return (
-    <main className="min-h-dvh bg-gradient-to-br from-emerald-50 via-white to-teal-50 px-4 py-6 sm:py-10">
-      <div className="mx-auto max-w-5xl">
-        <Link to="/panel" className="inline-flex items-center gap-1 text-sm font-medium text-emerald-700 hover:underline">
-          ← Volver a Mi panel
-        </Link>
-
-        <header className="mt-4 mb-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Eje de abastecimiento</p>
-          <h1 className="mt-1 text-2xl font-bold text-slate-900 sm:text-3xl">Simulador del proveedor: factoring ASG</h1>
-          <p className="mt-2 max-w-2xl text-slate-600">
-            Descubre cuánto dinero recibirías hoy por tu factura y cuánto te ahorras gracias a tus buenas prácticas
-            ambientales.
-          </p>
-        </header>
-
+    <PaginaAncha
+      etiqueta="Eje de abastecimiento"
+      titulo="Simulador del proveedor: factoring ASG"
+      descripcion="Descubre cuánto dinero recibirías hoy por tu factura y cuánto te ahorras gracias a tus buenas prácticas ambientales."
+    >
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Datos del proveedor */}
           <section className="space-y-6 rounded-3xl border border-slate-100 bg-white p-5 shadow-xl shadow-emerald-900/5 sm:p-6">
@@ -156,13 +146,7 @@ export default function SimuladorProveedorPage() {
             )}
           </section>
         </div>
-
-        <p className="mt-6 text-center text-xs text-slate-400">
-          Simulación con valores ilustrativos. Trabajo académico del diplomado; no es un servicio oficial de Grupo Nutresa
-          ni una oferta de crédito.
-        </p>
-      </div>
-    </main>
+    </PaginaAncha>
   )
 }
 
