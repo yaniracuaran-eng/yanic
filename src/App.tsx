@@ -3,6 +3,7 @@ import RutaPrivada from './components/RutaPrivada'
 import { AuthProvider } from './context/AuthContext'
 import LoginPage from './pages/LoginPage'
 import PanelPage from './pages/PanelPage'
+import SimuladorProveedorPage from './pages/SimuladorProveedorPage'
 
 function App() {
   return (
@@ -15,6 +16,14 @@ function App() {
             element={
               <RutaPrivada>
                 <PanelPage />
+              </RutaPrivada>
+            }
+          />
+          <Route
+            path="/simulador/proveedor"
+            element={
+              <RutaPrivada>
+                <SimuladorProveedorPage />
               </RutaPrivada>
             }
           />

@@ -1,5 +1,6 @@
 import { signOut } from 'firebase/auth'
 import { useState } from 'react'
+import { Link } from 'react-router'
 import { Aviso, Boton, Tarjeta } from '../components/ui'
 import { useSesion } from '../context/AuthContext'
 import { auth } from '../lib/firebase'
@@ -34,6 +35,21 @@ export default function PanelPage() {
       <div className="mt-6 rounded-2xl bg-slate-50 p-4">
         <p className="text-xs font-medium uppercase tracking-wide text-slate-500">Tu correo</p>
         <p className="mt-1 break-all font-semibold text-slate-900">{usuario?.email}</p>
+      </div>
+
+      <div className="mt-6">
+        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Simuladores</p>
+        <Link
+          to="/simulador/proveedor"
+          className="flex items-center gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 transition hover:bg-emerald-100"
+        >
+          <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white text-xl">🌱</span>
+          <span className="flex-1">
+            <span className="block font-semibold text-slate-900">Simulador del proveedor</span>
+            <span className="block text-sm text-slate-600">Factoring ASG: cobra hoy tu factura y ahorra con buenas prácticas.</span>
+          </span>
+          <span aria-hidden className="text-emerald-700">→</span>
+        </Link>
       </div>
 
       <div className="mt-6 space-y-4">
