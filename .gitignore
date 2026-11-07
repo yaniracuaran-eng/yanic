@@ -9,6 +9,9 @@ dist-ssr
 .env.local
 *.local
 
+# Caché de Firebase Hosting
+.firebase
+
 # Registros
 logs
 *.log
