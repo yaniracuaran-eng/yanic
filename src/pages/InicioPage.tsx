@@ -132,11 +132,34 @@ export default function InicioPage() {
           </p>
         </Seccion>
 
+        <section>
+          <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl">Explora la plataforma</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <Explorar a="/mercado" icono="📈" titulo="Precios y mercado" texto="Cómo se mueven los precios del café, cacao, ganado y leche." />
+            <Explorar a="/territorios" icono="🗺️" titulo="Territorios" texto="Los 28 departamentos donde está el programa." />
+            <Explorar a="/indicadores" icono="📊" titulo="Indicadores" texto="Metas del piloto e indicadores financieros y productivos." privada />
+            <Explorar a="/seguimiento" icono="🧑‍🌾" titulo="Seguimiento" texto="Productores y proveedores, paso a paso." privada />
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
+          <h2 className="text-xl font-bold text-slate-900">¿Por qué confiar?</h2>
+          <ul className="mt-4 grid gap-3 text-sm text-slate-700 sm:grid-cols-2">
+            <Punto>El dinero lo ponen entidades vigiladas por la Superintendencia Financiera de Colombia.</Punto>
+            <Punto>Tus datos se manejan según la ley de Habeas Data, con conexiones seguras de Open Finance.</Punto>
+            <Punto>La verificación ambiental es satelital y objetiva: no depende de papeles.</Punto>
+            <Punto>Usar la plataforma no tiene costo para productores ni tenderos.</Punto>
+          </ul>
+          <p className="mt-4 text-sm text-slate-500">
+            ¿Tienes dudas? Pregúntale al asistente con el botón 💬 de abajo a la derecha.
+          </p>
+        </section>
+
         <section className="rounded-3xl bg-emerald-50 p-6 text-center sm:p-10">
           <h2 className="text-2xl font-bold text-slate-900">Pruébalo tú mismo</h2>
           <p className="mx-auto mt-2 max-w-xl text-slate-600">
-            Simula el factoring ASG de un proveedor, el cupo de crédito de un tendero y revisa el tablero de
-            indicadores.
+            Simula el factoring ASG de un proveedor, el cupo de crédito de un tendero, sigue a los productores y revisa
+            los indicadores.
           </p>
           <Link
             to={destino}
@@ -175,6 +198,31 @@ function Tarjeta({ icono, titulo, children }: { icono: string; titulo: string; c
       <h3 className="mt-2 font-semibold text-slate-900">{titulo}</h3>
       <p className="mt-1 text-sm text-slate-600">{children}</p>
     </div>
+  )
+}
+
+function Explorar({
+  a,
+  icono,
+  titulo,
+  texto,
+  privada = false,
+}: {
+  a: string
+  icono: string
+  titulo: string
+  texto: string
+  privada?: boolean
+}) {
+  return (
+    <Link to={a} className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition hover:border-emerald-300 hover:shadow-md">
+      <span className="text-2xl" aria-hidden>
+        {icono}
+      </span>
+      <h3 className="mt-2 font-semibold text-slate-900">{titulo}</h3>
+      <p className="mt-1 text-sm text-slate-600">{texto}</p>
+      {privada && <p className="mt-2 text-xs text-slate-400">🔐 Requiere iniciar sesión</p>}
+    </Link>
   )
 }
 

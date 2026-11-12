@@ -38,7 +38,7 @@ export default function PanelPage() {
       </div>
 
       <div className="mt-6">
-        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">La demostración</p>
+        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Simuladores</p>
         <div className="space-y-2">
           <Acceso
             a="/simulador/proveedor"
@@ -52,12 +52,24 @@ export default function PanelPage() {
             titulo="Simulador del tendero"
             texto="Microcrédito Pideky: tu historial de compras es tu respaldo."
           />
+        </div>
+
+        <p className="mt-5 mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Información</p>
+        <div className="space-y-2">
           <Acceso
             a="/indicadores"
             icono="📊"
-            titulo="Indicadores de resultado"
-            texto="Avance de las 11 metas del piloto (datos simulados)."
+            titulo="Indicadores"
+            texto="Metas del piloto e indicadores financieros y productivos."
           />
+          <Acceso
+            a="/seguimiento"
+            icono="🧑‍🌾"
+            titulo="Seguimiento"
+            texto="Productores y proveedores: verificación, prácticas y pagos."
+          />
+          <Acceso a="/mercado" icono="📈" titulo="Precios y mercado" texto="Café, cacao, ganado y leche en 12 meses." />
+          <Acceso a="/territorios" icono="🗺️" titulo="Territorios" texto="Los 28 departamentos donde estamos." />
         </div>
         <Link to="/" className="mt-3 block text-center text-sm font-medium text-emerald-700 hover:underline">
           Ver la propuesta completa
