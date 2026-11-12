@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
 import Asistente from './components/Asistente'
+import Menu from './components/Menu'
 import RutaPrivada from './components/RutaPrivada'
 import { AuthProvider } from './context/AuthContext'
 import IndicadoresPage from './pages/IndicadoresPage'
@@ -19,6 +20,9 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        {/* Menú fijo arriba en todas las páginas */}
+        <Menu />
+
         <Routes>
           {/* Públicas */}
           <Route path="/" element={<InicioPage />} />
